@@ -1,0 +1,48 @@
+/* .body{
+    background:#f5f5f5;
+}
+.containerrr{
+    position: relative;
+    bottom: 10px;
+    overflow-x: hidden;
+}
+#logout{
+    
+
+    transform: translateX(calc((88vw - 100%)/2));
+    padding-right: 1em;
+    
+}
+i{
+    position: relative;
+    bottom: 16px;
+    right: 50px;
+    font-size: 30px;
+}
+ */
+.li{
+    margin-left: 50px;
+    position: relative;
+    top: 19px;
+    left: 80px;
+
+}
+.divcenter{
+    text-align: center;
+}
+
+.nav{
+    background: #2c2012;
+
+}
+
+.log{
+    position: relative;
+    left: 25cm;
+    top: 19px;
+}
+
+.baroft{
+    position: relative;
+    top: 19px;
+}

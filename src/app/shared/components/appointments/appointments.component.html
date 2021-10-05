@@ -1,0 +1,108 @@
+
+<header><app-menu></app-menu></header>
+
+<!-- <div class="container"> -->
+
+<body>
+
+    <div class="row">             
+        <div class="col s8">       
+            <div class="card"> 
+                <div class="card-content">   
+                    <form #appointmentForm="ngForm" (ngSubmit)="addAppointment 
+                     (appointmentForm)"> 
+                        <input type="hidden" name="_id" #_id="ngModel" 
+                            [(ngModel)]="selectedAppointment._id">   
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="nameClient" #nameClient="ngModel"
+                                [(ngModel)]="selectedAppointment.nameClient"
+                                placeholder="Ingrese su nombre">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceName" #serviceName="ngModel"
+                                [(ngModel)]="selectedAppointment.serviceName"
+                                placeholder="Ingrese nombre del servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="date" name="serviceDate" #serviceDate="ngModel"
+                                [(ngModel)]="selectedAppointment.serviceDate"
+                                placeholder="Ingrese la fecha del servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceHour" #serviceHour="ngModel"
+                                [(ngModel)]="selectedAppointment.serviceHour"
+                                placeholder="Ingrese la hora del servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="nameBarber" #nameBarber="ngModel"
+                                [(ngModel)]="selectedAppointment.nameBarber"
+                                placeholder="Ingrese el nombre del barbero">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="servicePrice" #servicePrice="ngModel"
+                                [(ngModel)]="selectedAppointment.servicePrice"
+                                placeholder="Ingrese el precio del servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceStatus" #serviceStatus="ngModel"
+                                [(ngModel)]="selectedAppointment.serviceStatus"
+                                placeholder="Ingrese el estado se la cita">
+                            </div>
+
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn" style="margin-left: 2px;">Save</button>
+                                    <button class="btn rigth" (click)="resetForm(appointmentForm)">Clean</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form> 
+                </div>   
+            </div>
+        </div>
+        <div class="col s8">       
+            <table>
+                <thead>
+                    <th>nameClient</th>
+                    <th>serviceName</th>
+                    <th>serviceDate</th>
+                    <th>serviceHour</th>
+                    <th>nameBarber</th>
+                    <th>servicePrice</th>
+                    <th>serviceStatus</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of appointments">
+                        <td>{{appointment.nameClient}}</td>
+                        <td>{{appointment.serviceName}}</td>
+                        <td>{{appointment.serviceDate}}</td>
+                        <td>{{appointment.serviceHour}}</td>
+                        <td>{{appointment.nameBarber}}</td>
+                        <td>{{appointment.servicePrice}}</td>
+                        <td>{{appointment.serviceStatus}}</td>
+                        <td>
+                            <a (click)="editAppointment(appointment)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a (click)="deleteAppointment(appointment._id)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</body>
+<!-- </div> -->
+

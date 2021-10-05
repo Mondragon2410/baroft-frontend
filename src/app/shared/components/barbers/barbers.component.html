@@ -1,0 +1,142 @@
+<header><app-menu></app-menu></header>
+
+
+
+ <div *ngFor="let item of invoices" id="barberNotification" class="row">
+
+        <div class="bannerNotificationMessage">
+            <div class="divContainer">
+              <p>
+                Notificacion cliente direccion: {{item.barbershopAddress}} servicio: {{item.serviceType}} tiempo estimado: {{item.serviceTime}}
+              </p>
+              <div class="bannerButtonContainer" (click)="cambioEntendido(item)">
+                <a>Entendido</a>
+              </div>
+            </div>
+          </div>
+    
+    </div>  
+
+
+ <!--    <img src="../../../../assets/images/barbero.jpg"> -->
+<body>
+
+    <div class="row">             
+        <div class="col s5">       
+            <div class="card"> 
+                <div class="card-content">   
+                    <form #barberForm="ngForm" (ngSubmit)="addBarber 
+                     (barberForm)"> 
+                        <input type="hidden" name="_id" #_id="ngModel" 
+                            [(ngModel)]="selectedBarber._id">   
+                        <div class="row">
+
+
+                            <div class="input-field col s12">
+                                <input type="text" name="name" #name="ngModel"
+                                [(ngModel)]="selectedBarber.name"
+                                placeholder="Ingrese su nombre">
+                            </div>
+
+
+                            <div class="input-field col s12">
+                                <input type="text" name="barberType" #barberType="ngModel"
+                                [(ngModel)]="selectedBarber.barberType"
+                                placeholder="Ingrese su ocupacion">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="email" #email="ngModel"
+                                [(ngModel)]="selectedBarber.email"
+                                placeholder="Ingrese su correo">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="phone" #phone="ngModel"
+                                [(ngModel)]="selectedBarber.phone"
+                                placeholder="Ingrese su telefono">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="sex" #sex="ngModel"
+                                [(ngModel)]="selectedBarber.sex"
+                                placeholder="Ingrese su genero">
+                            </div>
+
+
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn" style="margin-left: 2px;">Save</button>
+                                    <button class="btn rigth" (click)="resetForm(barberForm)">Clean</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form> 
+                </div>   
+            </div>
+        </div>
+
+        
+        <div class="col s7" *ngIf="barbero == null">       
+            <table>
+                <thead>
+                    <th>img</th>
+                    <th>Name</th>
+                    <th>BarberType</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Sex</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let barber of barbers">
+                        <img [src] = "barber.img">
+                        <td>{{barber.name}}</td>
+                        <td>{{barber.barberType}}</td>
+                        <td>{{barber.email}}</td>
+                        <td>{{barber.phone}}</td>
+                        <td>{{barber.sex}}</td>
+                        <td>
+                            <a (click)="editBarber(barber)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a (click)="deleteBarber(barber._id)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col s7" *ngIf="barbero">       
+            <table>
+                <thead>
+                    
+                    <th>Cliente</th>
+                    <th>Email</th>
+                    <th>Fecha</th>
+                    <th>Enviar</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of clients">
+               
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.date}}</td>
+                        <td>
+                            <a (click)="editBarber(user)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</body>
+
+

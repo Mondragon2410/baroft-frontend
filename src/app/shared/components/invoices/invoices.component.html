@@ -1,0 +1,123 @@
+<header><app-menu></app-menu></header>
+
+<div *ngFor="let item of invoicesFilter" id="barberNotification" class="row">
+
+    <div class="bannerNotificationMessage">
+        <div class="divContainer">
+          <p>
+            Notificacion barbero: {{item.barbershopAddress}} servicio: {{item.serviceType}} tiempo estimado: {{item.serviceTime}} 
+          </p>
+          <div class="bannerButtonContainer" (click)="cambioEntendidoUser(item)">
+            <a>Entendido</a>
+          </div>
+        </div>
+      </div>
+
+</div>  
+
+
+
+
+
+
+<body>
+<!-- <div class="container"> -->
+    <div class="row">             
+        <div class="col s5">       
+            <div class="card"> 
+                <div class="card-content">   
+                    <form #invoiceForm="ngForm" (ngSubmit)="addInvoice 
+                     (invoiceForm)"> 
+                        <input type="hidden" name="_id" #_id="ngModel" 
+                            [(ngModel)]="selectedInvoice._id">   
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="barbershopName" #barbershopName="ngModel"
+                                [(ngModel)]="selectedInvoice.barbershopName"
+                                placeholder="Ingrese el nombre de la barberia">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="barbershopAddress" #barbershopAddress="ngModel"
+                                [(ngModel)]="selectedInvoice.barbershopAddress"
+                                placeholder="Ingrese la direccion de la barberia">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceType" #serviceType="ngModel"
+                                [(ngModel)]="selectedInvoice.serviceType"
+                                placeholder="Ingrese el tipo de servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceTime" #serviceTime="ngModel"
+                                [(ngModel)]="selectedInvoice.serviceTime"
+                                placeholder="Ingrese la duracion del servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="servicePrice" #servicePrice="ngModel"
+                                [(ngModel)]="selectedInvoice.servicePrice"
+                                placeholder="Ingrese el precio del servicio">
+                            </div>
+                             
+                            <div class="input-field col s12">
+                                <select name="barberCode" [(ngModel)]="seleccionada" style="display: block;">
+                                       
+                                  <option value="" disabled selected >Seleccionar barbero</option>
+
+                                  <option *ngFor="let barber of barbers" [value]="barber._id">{{barber.name}}</option>
+
+                                </select>
+
+                              </div>
+                                          
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn" style="margin-left: 2px;">Save</button>
+                                    <button class="btn rigth" (click)="resetForm(invoiceForm)">Clean</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </form> 
+                </div>   
+            </div>
+        </div>
+        <div class="col s7">       
+            <table>
+                <thead>
+                    <th>barbershopName</th>
+                    <th>barbershopAddress</th>
+                    <th>serviceType</th>
+                    <th>serviceTime</th>
+                    <th>servicePrice</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let invoice of invoices">
+                        <td>{{invoice.barbershopName}}</td>
+                        <td>{{invoice.barbershopAddress}}</td>
+                        <td>{{invoice.serviceType}}</td>
+                        <td>{{invoice.serviceTime}}</td>
+                        <td>{{invoice.servicePrice}}</td>
+                        <td>
+                            <a (click)="editInvoice(invoice)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a (click)="deleteInvoice(invoice._id)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</body>
+<!-- </div> -->
+
+
+  

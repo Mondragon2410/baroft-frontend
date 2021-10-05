@@ -1,0 +1,104 @@
+<header><app-menu></app-menu></header>
+
+<!-- <div class="container"> -->
+
+  <body>  
+    <div class="row">             
+        <div class="col s5">       
+            <div class="card"> 
+                <div class="card-content">   
+                    <form #commentForm="ngForm" (ngSubmit)="addComment 
+                     (commentForm)"> 
+                        <input type="hidden" name="_id" #_id="ngModel" 
+                            [(ngModel)]="selectedComment._id">   
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="nameClient" #nameClient="ngModel"
+                                [(ngModel)]="selectedComment.nameClient"
+                                placeholder="Ingrese su nombre">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceName" #serviceName="ngModel"
+                                [(ngModel)]="selectedComment.serviceName"
+                                placeholder="Ingrese el nombre del servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceType" #serviceType="ngModel"
+                                [(ngModel)]="selectedComment.serviceType"
+                                placeholder="Ingrese el tipo de servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceComments" #serviceComments="ngModel"
+                                [(ngModel)]="selectedComment.serviceComments"
+                                placeholder="Ingrese los comentarios del servicio">
+                            </div>
+
+
+                            <form>
+                                <p class="clasificacion">
+                                  <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                                  --><label for="radio1">★</label><!--
+                                  --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                                  --><label for="radio2">★</label><!--
+                                  --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                                  --><label for="radio3">★</label><!--
+                                  --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                                  --><label for="radio4">★</label><!--
+                                  --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                                  --><label for="radio5">★</label>
+                                </p>
+                              </form>
+        
+
+
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn" style="margin-left: 2px;">Save</button>
+                                    <button class="btn rigth" (click)="resetForm(commentForm)">Clean</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form> 
+
+                    
+
+                </div>   
+            </div>
+        </div>
+        <div class="col s7">       
+            <table>
+                <thead>
+                    <th>nameClient</th>
+                    <th>serviceName</th>
+                    <th>serviceType</th>
+                    <th>serviceComments</th>
+                  
+                </thead>
+                <tbody>
+                    <tr *ngFor="let comment of comments">
+                        <td>{{comment.nameClient}}</td>
+                        <td>{{comment.serviceName}}</td>
+                        <td>{{comment.serviceType}}</td>
+                        <td>{{comment.serviceComments}}</td>
+                        <td>
+                            <a (click)="editComment(comment)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a (click)="deleteComment(comment._id)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</body>
+<!-- </div> -->
+

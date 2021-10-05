@@ -1,0 +1,85 @@
+<header><app-menu></app-menu></header>
+
+<!-- <div class="container"> -->
+    <body>
+    <div class="row">             
+        <div class="col s5">       
+            <div class="card"> 
+                <div class="card-content">   
+                    <form #serviceForm="ngForm" (ngSubmit)="addService 
+                     (serviceForm)"> 
+                        <input type="hidden" name="_id" #_id="ngModel" 
+                            [(ngModel)]="selectedService._id">   
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceName" #serviceName="ngModel"
+                                [(ngModel)]="selectedService.serviceName"
+                                placeholder="Ingrese el nombre del servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceType" #serviceType="ngModel"
+                                [(ngModel)]="selectedService.serviceType"
+                                placeholder="Ingrese el tipo de servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="servicePrice" #servicePrice="ngModel"
+                                [(ngModel)]="selectedService.servicePrice"
+                                placeholder="Ingrese el precio del servicio">
+                            </div>
+
+                            <div class="input-field col s12">
+                                <input type="text" name="serviceTime" #serviceTime="ngModel"
+                                [(ngModel)]="selectedService.serviceTime"
+                                placeholder="Ingrese el tiempo del servicio">
+                            </div>
+
+
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn" style="margin-left: 2px;">Save</button>
+                                    <button class="btn rigth" (click)="resetForm(serviceForm)">Clean</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form> 
+                </div>   
+            </div>
+        </div>
+        <div class="col s6">       
+            <table>
+                <thead>
+                    <th>ServiceName</th>
+                    <th>ServiceType</th>
+                    <th>ServicePrice</th>
+                    <th>ServiceTime</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let service of services">
+                        <td>{{service.serviceName}}</td>
+                        <td>{{service.serviceType}}</td>
+                        <td>{{service.servicePrice}}</td>
+                        <td>{{service.serviceTime}}</td>
+
+                        <td> <!-- aqui va un *ngIf="" -->
+                            <a (click)="editService(service)">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            <a (click)="deleteService(service._id)">
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</body>
+<!-- </div> -->
+
+
